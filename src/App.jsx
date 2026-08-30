@@ -12,10 +12,8 @@ const CLINIC = {
   address: "2nd Floor R&M Bldg, JC Wagan St, Poblacion, San Antonio, Quezon, 4324",
   phone: "+639175605585",
   gcashNumber: "0949 801 2414 (Aaron Paul Aniciete)",
-  // TODO: confirm this is the right Facebook page for THIS branch — carried over unchanged for now.
   facebookUrl: "https://www.facebook.com/albanicietemedicalclinic",
-  // TODO: this needs a real Google Maps link for the San Antonio branch — placeholder for now.
-  googleMapsUrl: "https://maps.google.com/?q=JC+Wagan+St+Poblacion+San+Antonio+Quezon",
+  googleMapsUrl: "https://maps.app.goo.gl/CXLhKxVSMgypuDNE8",
 };
 
 // Doctor's weekly hours. Every day is open — Thursday just closes earlier.
@@ -107,8 +105,8 @@ export default function BookingApp() {
 
       {notice && (
         <div style={styles.scheduleNotice}>
-          <span style={{ fontSize: 20, lineHeight: 1 }}>📣</span>
-          <span>{notice}</span>
+          <div style={styles.scheduleNoticeTitle}>📣 Clinic Advisory</div>
+          <div>{notice}</div>
         </div>
       )}
 
@@ -138,29 +136,16 @@ function Landing({ onStart }) {
   return (
     <div style={styles.card}>
       <img src="/logo-full.png" alt={CLINIC.name} style={{ width: 200, display: "block", margin: "0 auto 18px" }} />
-      <h1 style={styles.h1}>Book an appointment</h1>
-      <p style={styles.p}>
-        Fill in your details and pick a time — our team will confirm your booking after
-        checking your payment.
-      </p>
 
-      <div style={styles.hoursBox}>
-        <div style={styles.hoursTitle}>Clinic hours</div>
+      <div style={styles.hoursBoxHighlight}>
+        <div style={styles.hoursTitleHighlight}>Clinic Hours</div>
         <div style={styles.hoursRow}><span>Monday – Wednesday</span><span>9:00 AM – 3:30 PM</span></div>
         <div style={styles.hoursRow}><span>Thursday</span><span>9:00 AM – 1:30 PM</span></div>
         <div style={styles.hoursRow}><span>Friday – Sunday</span><span>9:00 AM – 3:30 PM</span></div>
       </div>
 
-      <div style={styles.noteBox}>
-        The first few slots each day are kept open for walk-ins. Online booking starts from the
-        next available slot after that, in 10-minute increments.
-      </div>
-
-      <button style={styles.primaryBtn} onClick={onStart}>Book now</button>
-
       <div style={styles.locationBox}>
-        {/* TODO: swap in a real photo or map screenshot of the San Antonio branch —
-            removed for now rather than reuse the Tiaong branch's image by mistake. */}
+        <img src="/clinic-exterior.jpg" alt="Map showing Alba-Aniciete Adult & Pedia Clinic (San Antonio) location" style={styles.locationPhoto} />
         <div style={{ padding: "12px 14px" }}>
           <div style={styles.hoursTitle}>Find us</div>
           <div style={{ fontSize: 13, color: "#12312D", marginBottom: 10 }}>{CLINIC.address}</div>
@@ -169,7 +154,7 @@ function Landing({ onStart }) {
               Open in Google Maps
             </a>
             <a href={CLINIC.facebookUrl} target="_blank" rel="noopener noreferrer" style={styles.linkBtnOutline}>
-              View our updated clinic schedule
+              Follow us on Facebook
             </a>
           </div>
         </div>
@@ -414,12 +399,15 @@ const styles = {
   header: { display: "flex", alignItems: "center", gap: 12, maxWidth: 480, margin: "0 auto 20px" },
   clinicName: { fontFamily: "Fraunces, serif", fontSize: 16, color: "#12312D", lineHeight: 1.2 },
   clinicSub: { fontSize: 11.5, color: "#5B6B68" },
-  scheduleNotice: { maxWidth: 480, margin: "0 auto 18px", background: "#0F5E56", borderRadius: 12, padding: "14px 18px", fontSize: 15.5, color: "#fff", lineHeight: 1.5, fontWeight: 700, boxShadow: "0 6px 20px rgba(15,94,86,0.35)", display: "flex", alignItems: "flex-start", gap: 10 },
+  scheduleNotice: { maxWidth: 480, margin: "0 auto 18px", background: "#0F5E56", borderRadius: 12, padding: "14px 18px", fontSize: 15, color: "#fff", lineHeight: 1.5, fontWeight: 600, boxShadow: "0 6px 20px rgba(15,94,86,0.35)" },
+  scheduleNoticeTitle: { fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.6, marginBottom: 6, color: "#EAF3F1" },
   card: { maxWidth: 480, margin: "0 auto", background: "#fff", borderRadius: 14, padding: 24, border: "1px solid #E4EAE8", boxShadow: "0 8px 30px rgba(15,45,40,0.06)" },
   h1: { fontFamily: "Fraunces, serif", fontSize: 22, color: "#12312D", margin: "0 0 10px", textAlign: "center" },
   p: { fontSize: 14, color: "#2A3B38", lineHeight: 1.6, textAlign: "center" },
   hoursBox: { background: "#F7F8F7", borderRadius: 10, padding: "12px 14px", margin: "16px 0" },
   hoursTitle: { fontSize: 11.5, fontWeight: 700, color: "#5B6B68", textTransform: "uppercase", letterSpacing: 0.3, marginBottom: 6 },
+  hoursBoxHighlight: { background: "#EAF3F1", border: "1.5px solid #0F5E56", borderRadius: 10, padding: "14px 16px", margin: "0 0 16px" },
+  hoursTitleHighlight: { fontSize: 13, fontWeight: 800, color: "#0F5E56", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 },
   hoursRow: { display: "flex", justifyContent: "space-between", fontSize: 13.5, color: "#12312D", padding: "3px 0", fontFamily: "IBM Plex Mono, monospace" },
   noteBox: { background: "#FBF1DF", border: "1px solid #EAD6A8", borderRadius: 10, padding: "10px 12px", fontSize: 12.5, color: "#6B4A1F", lineHeight: 1.5, margin: "12px 0" },
   errorBox: { background: "#FBE7E7", border: "1px solid #F0B4B4", borderRadius: 10, padding: "10px 12px", fontSize: 12.5, color: "#B23B3B", marginTop: 12 },

@@ -16,15 +16,14 @@ const CLINIC = {
   googleMapsUrl: "https://maps.app.goo.gl/CXLhKxVSMgypuDNE8",
 };
 
-// Doctor's weekly hours. Every day is open — Thursday just closes earlier.
+// Doctor's weekly hours. Weekends have no fixed schedule — see the Clinic Advisory notice
+// instead, which the clinic can update anytime from the EMR.
 const CLINIC_HOURS = {
-  0: { open: "09:00", close: "15:30" }, // Sunday
-  1: { open: "09:00", close: "15:30" }, // Monday
-  2: { open: "09:00", close: "15:30" }, // Tuesday
-  3: { open: "09:00", close: "15:30" }, // Wednesday
-  4: { open: "09:00", close: "13:30" }, // Thursday
-  5: { open: "09:00", close: "15:30" }, // Friday
-  6: { open: "09:00", close: "15:30" }, // Saturday
+  1: { open: "10:00", close: "15:00" }, // Monday
+  2: { open: "10:00", close: "15:00" }, // Tuesday
+  3: { open: "10:00", close: "15:00" }, // Wednesday
+  4: { open: "10:00", close: "15:00" }, // Thursday
+  5: { open: "10:00", close: "15:00" }, // Friday
 };
 const SLOT_MINUTES = 10;
 const WALKIN_SLOTS = 5; // First 5 slots of each day are reserved for walk-ins, not bookable online.
@@ -139,9 +138,9 @@ function Landing({ onStart }) {
 
       <div style={styles.hoursBoxHighlight}>
         <div style={styles.hoursTitleHighlight}>Clinic Hours</div>
-        <div style={styles.hoursRow}><span>Monday – Wednesday</span><span>9:00 AM – 3:30 PM</span></div>
-        <div style={styles.hoursRow}><span>Thursday</span><span>9:00 AM – 1:30 PM</span></div>
-        <div style={styles.hoursRow}><span>Friday – Sunday</span><span>9:00 AM – 3:30 PM</span></div>
+        <div style={styles.hoursRow}><span>Monday – Friday</span><span>10:00 AM – 3:00 PM</span></div>
+        <div style={styles.hoursRow}><span>Saturday – Sunday</span><span>To be announced</span></div>
+        <div style={styles.hoursNote}>Weekend availability is posted in the Clinic Advisory above when set.</div>
       </div>
 
       <div style={styles.locationBox}>
@@ -408,6 +407,7 @@ const styles = {
   hoursTitle: { fontSize: 11.5, fontWeight: 700, color: "#5B6B68", textTransform: "uppercase", letterSpacing: 0.3, marginBottom: 6 },
   hoursBoxHighlight: { background: "#EAF3F1", border: "1.5px solid #0F5E56", borderRadius: 10, padding: "14px 16px", margin: "0 0 16px" },
   hoursTitleHighlight: { fontSize: 13, fontWeight: 800, color: "#0F5E56", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 },
+  hoursNote: { fontSize: 11.5, color: "#5B6B68", marginTop: 6, fontStyle: "italic" },
   hoursRow: { display: "flex", justifyContent: "space-between", fontSize: 13.5, color: "#12312D", padding: "3px 0", fontFamily: "IBM Plex Mono, monospace" },
   noteBox: { background: "#FBF1DF", border: "1px solid #EAD6A8", borderRadius: 10, padding: "10px 12px", fontSize: 12.5, color: "#6B4A1F", lineHeight: 1.5, margin: "12px 0" },
   errorBox: { background: "#FBE7E7", border: "1px solid #F0B4B4", borderRadius: 10, padding: "10px 12px", fontSize: 12.5, color: "#B23B3B", marginTop: 12 },

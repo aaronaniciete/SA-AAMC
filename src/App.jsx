@@ -144,7 +144,17 @@ function Landing({ onStart }) {
       </div>
 
       <div style={styles.locationBox}>
-        <img src="/clinic-exterior.jpg" alt="Map showing Alba-Aniciete Adult & Pedia Clinic (San Antonio) location" style={styles.locationPhoto} />
+        <div style={styles.mapEmbed}>
+          <iframe
+            src="https://www.google.com/maps?q=Alba-Aniciete+Adult+%26+Pedia+Clinic%2C+San+Antonio%2C+Quezon&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0, display: "block" }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Alba-Aniciete Adult & Pedia Clinic location map"
+          />
+        </div>
         <div style={{ padding: "12px 14px" }}>
           <div style={styles.hoursTitle}>Find us</div>
           <div style={{ fontSize: 13, color: "#12312D", marginBottom: 10 }}>{CLINIC.address}</div>
@@ -549,6 +559,7 @@ const styles = {
   faqNote: { marginTop: 10, fontSize: 12, color: "#5B6B68", fontStyle: "italic" },
   faqQr: { width: 160, height: 160, display: "block", margin: "12px 0", borderRadius: 8, border: "1px solid #E4EAE8" },
   locationPhoto: { width: "100%", height: "auto", display: "block" },
+  mapEmbed: { width: "100%", aspectRatio: "16 / 10", background: "#F1F4F3" },
   qrImage: { width: "100%", maxWidth: 260, display: "block", margin: "4px auto 16px", borderRadius: 10, border: "1px solid #E4EAE8" },
   linkBtn: { display: "inline-block", background: "#0F5E56", color: "#fff", textDecoration: "none", fontSize: 12.5, fontWeight: 600, padding: "8px 12px", borderRadius: 7 },
   linkBtnOutline: { display: "inline-block", background: "#fff", color: "#0F5E56", textDecoration: "none", fontSize: 12.5, fontWeight: 600, padding: "8px 12px", borderRadius: 7, border: "1px solid #0F5E56" },

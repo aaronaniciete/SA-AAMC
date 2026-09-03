@@ -158,6 +158,123 @@ function Landing({ onStart }) {
           </div>
         </div>
       </div>
+
+      <FaqSection />
+    </div>
+  );
+}
+
+function FaqItem({ question, children }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={styles.faqItem}>
+      <button style={styles.faqQuestion} onClick={() => setOpen((o) => !o)}>
+        <span>{question}</span>
+        <span style={{ ...styles.faqChevron, transform: open ? "rotate(180deg)" : "none" }}>▾</span>
+      </button>
+      {open && <div style={styles.faqAnswer}>{children}</div>}
+    </div>
+  );
+}
+
+function FaqSection() {
+  return (
+    <div style={styles.faqSection}>
+      <div style={styles.hoursTitle}>FAQs (Mga Karaniwang Tanong)</div>
+
+      <FaqItem question="Paano kami mako-contact?">
+        <div>Facebook/Meta messenger: @albanicietemedicalclinic</div>
+        <div>Mobile no.: 0917 560 5585</div>
+        <img src="/messenger-qr.jpg" alt="Scan to message us on Facebook Messenger" style={styles.faqQr} />
+        <div style={styles.faqNote}>
+          Note: Hindi po kami 24hrs pero AGAD po naming sinusubukan masagot ang inyong mga TANONG
+        </div>
+      </FaqItem>
+
+      <FaqItem question="Ano ang schedule today?">
+        <div>
+          Ang SCHEDULE po today at CLINIC ADVISORY (Kapag may pagbabago sa schedule), maari po
+          itong i-CHECK dito sa aming website.
+        </div>
+      </FaqItem>
+
+      <FaqItem question="Paano magpa-schedule ng APPOINTMENT?">
+        <div>Kapag po nakapag bayad na ng check up:</div>
+        <div>Tiaong 350₱</div>
+        <div>San Antonio 400₱</div>
+        <div style={{ marginTop: 8 }}>Saka pa lang po puwede makapagpalista.</div>
+        <div>(Wala na po kayong babayadan na check up sa clinic)</div>
+        <div style={{ marginTop: 8 }}>Maaari pong magbayad in advance sa aming GCASH</div>
+        <div>0949 801 2414 gcash Aaron Paul Aniciete</div>
+        <img src="/gcash-qr.jpg" alt="GCash QR code for Alba-Aniciete Medical Clinic" style={styles.faqQr} />
+        <div style={{ marginTop: 8 }}>
+          Paki-send lang po sa aming messenger @albanicietemedicalclinic o 0917 560 5585 ang
+          GCASH reference number
+        </div>
+        <div style={{ marginTop: 10, fontWeight: 700 }}>MGA DETALYE NA KAILANGAN:</div>
+        <div>Tiaong o San Antonio?</div>
+        <div>Ano pong pangalan ng magpapacheck?</div>
+        <div>Ano po ang contact number?</div>
+        <div style={{ marginTop: 8 }}>Para po mailista. Salamat po</div>
+      </FaqItem>
+
+      <FaqItem question="Puwede ba mag-walk in?">
+        <div>Puwede po.</div>
+        <div style={{ marginTop: 8 }}>Saka palang po maiilista kapag nasa clinic na.</div>
+        <div style={{ marginTop: 8 }}>
+          May pagkakataon po na hindi na nakakatanggap ng pasyente kapag sobrang dami pa ang
+          pasyente, bago ang tapos ng check up schedule sa araw na iyon.
+        </div>
+      </FaqItem>
+
+      <FaqItem question="BAKIT may advance payment?">
+        <div>Dahil marami po sa ating mga slot ang NASASAYANG kapag may hindi nakakarating.</div>
+        <div style={{ marginTop: 8 }}>
+          (Halimbawa: Bago magka-advance payment ang aming clinic. 40 patients ang nakalista pero
+          sa 40 na nakalista 10 ang hindi darating)
+        </div>
+      </FaqItem>
+
+      <FaqItem question="Saan ang clinic namin?">
+        <div style={{ fontWeight: 700 }}>San Antonio, Quezon</div>
+        <div>
+          Sa Poblacion po. Tapat po ng EJS Atienza Trading / south emerald sioland grocery. Sa may
+          DATING Yunik Burger po, 2nd floor po kami.
+        </div>
+        <div>(May sketch po ng map sa website)</div>
+        <div style={{ marginTop: 10, fontWeight: 700 }}>Tiaong, Quezon</div>
+        <div>Sa tapat po ng Alaala Park malapit sa Munisipyo. 2nd floor po kami.</div>
+        <div>(May sketch po ng map sa website)</div>
+      </FaqItem>
+
+      <FaqItem question="Paano makakuha ng MEDICAL CERTIFICATE o FIT TO WORK?">
+        <div>
+          Sa amin pong Clinic, KAILANGAN po ng check up muna ni Doc. Bago po mabigyan ng medical
+          certificate o fit to work
+        </div>
+        <div style={{ marginTop: 8, fontWeight: 700 }}>Check up</div>
+        <div>Tiaong 350₱</div>
+        <div>San Antonio 400₱</div>
+        <div>+</div>
+        <div style={{ fontWeight: 700 }}>Medical Certificate</div>
+        <div>150₱</div>
+        <div style={{ marginTop: 8 }}>(HINDI po puwedeng walang check up.)</div>
+      </FaqItem>
+
+      <FaqItem question="Anti-Rabies?">
+        <div>
+          Sa Aaron Animal Bite Center po sa loob po ng Aaron Drugstore katabi ng Goldilocks Tiaong.
+        </div>
+        <div style={{ marginTop: 8 }}>LIBRE check ng kalmot/kagat.</div>
+        <div style={{ marginTop: 8 }}>Kung anong bakuna ang kailangan:</div>
+        <div style={{ marginTop: 6 }}>Anti Rabies 550₱</div>
+        <div>ERIG 1000₱ (SMALL WOUND)</div>
+        <div>Tetanus Toxoid 300₱</div>
+        <div>Tetanus antitoxin 300₱</div>
+        <div style={{ marginTop: 8 }}>
+          9am-6pm po hindi po kailangan ng appointment wala po kadalasang naghihintay
+        </div>
+      </FaqItem>
     </div>
   );
 }
@@ -424,6 +541,13 @@ const styles = {
   footer: { textAlign: "center", fontSize: 12, color: "#8A9793", marginTop: 24 },
   footerLink: { color: "#0F5E56", fontWeight: 600, textDecoration: "none" },
   locationBox: { marginTop: 20, borderRadius: 10, overflow: "hidden", border: "1px solid #E4EAE8" },
+  faqSection: { marginTop: 24 },
+  faqItem: { borderBottom: "1px solid #EDF1F0" },
+  faqQuestion: { width: "100%", background: "none", border: "none", padding: "14px 2px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, textAlign: "left", fontSize: 14.5, fontWeight: 600, color: "#12312D", cursor: "pointer" },
+  faqChevron: { color: "#0F5E56", fontSize: 16, flexShrink: 0, transition: "transform 0.2s" },
+  faqAnswer: { padding: "0 2px 16px", fontSize: 13.5, color: "#2A3B38", lineHeight: 1.6 },
+  faqNote: { marginTop: 10, fontSize: 12, color: "#5B6B68", fontStyle: "italic" },
+  faqQr: { width: 160, height: 160, display: "block", margin: "12px 0", borderRadius: 8, border: "1px solid #E4EAE8" },
   locationPhoto: { width: "100%", height: "auto", display: "block" },
   qrImage: { width: "100%", maxWidth: 260, display: "block", margin: "4px auto 16px", borderRadius: 10, border: "1px solid #E4EAE8" },
   linkBtn: { display: "inline-block", background: "#0F5E56", color: "#fff", textDecoration: "none", fontSize: 12.5, fontWeight: 600, padding: "8px 12px", borderRadius: 7 },
